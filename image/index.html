@@ -1,0 +1,20 @@
+<style>
+#example {
+    --image: url('render.png');
+    background-image: paint(image);
+    width: 200px;
+    height: 200px;
+    border: 2px solid black;
+}
+</style>
+
+<div id="example"></div>
+
+<script>
+    CSS.registerProperty({
+        name: '--image',
+        syntax: '<image> | none',
+        initialValue: 'none',
+    });
+    CSS.paintWorklet.addModule('paintworklet.js');
+</script>
