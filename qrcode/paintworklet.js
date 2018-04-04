@@ -1,7 +1,17 @@
 registerPaint('radio-button', class {
     static get inputProperties() { return ['--text']; }
+
     paint(ctx, geom, props) {
  
+      
+      let code = (props.get('--text') && props.get('--text')[0]) || '';
+      let qr = this.getQR();
+      qr.addData(code);
+      qr.make();
+      qr.renderTo2dContext(ctx, Math.min(geom.width, geom.height)/33);
+    }
+
+    getQR() {
       this.qrcode = this.qrcode || function() {
         console.log('QRCODEEEE');
         //---------------------------------------------------------------------
@@ -2083,17 +2093,6 @@ registerPaint('radio-button', class {
         return qrcode;
       }();
 
-      let code = (props.get('--text') && props.get('--text')[0]) || '';
-      var qr = this.qrcode(4, 'L');
-      qr.addData(code);
-      qr.make();
-      qr.renderTo2dContext(ctx, Math.min(geom.width, geom.height)/33);
-
-      // this.x = (this.x || 1) + 1;
-      // console.log(this.x);
-      // const tick = props.get('--tick').value;
-      // ctx.beginPath();
-      // ctx.arc(geom.width/2, geom.height/2, geom.height*tick/100, 0, Math.PI * 2);
-      // ctx.fill();
+      return this.qrcode(4, 'L');
     }
 });
