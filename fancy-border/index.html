@@ -1,0 +1,38 @@
+<!doctype html>
+<button id="radio"></button>
+
+<style>
+#radio {
+    width: 100px;
+    height: 100px;
+    background-color:blanchedalmond;
+    border-width: 20px;
+    border-style: solid;
+    border-image-source: paint(fancy);
+    border-image-slice: 0 fill;
+    border-image-outset: 20px;
+    --tick: 0%;
+    animation: pulse 10s infinite;
+}
+@keyframes pulse {
+  0% {
+    --tick: 0%;
+  }
+  50% {
+    --tick: 50%;
+  }
+  100% {
+    --tick: 100%;
+  }
+}
+
+</style>
+
+<script>
+    CSS.registerProperty({
+      name: '--tick',
+      syntax: '<percentage>',
+      initialValue: '0%'
+    });
+    (CSS.paintWorklet || paintWorklet).addModule('paintworklet.js');
+</script>
