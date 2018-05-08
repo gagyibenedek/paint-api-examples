@@ -1,0 +1,33 @@
+<!doctype html>
+<textarea id="data"></textarea>
+<br/>
+<button id="btn">Add data points</button>
+
+<style>
+#data {
+    width: 200px;
+    height: 200px;
+    background-color:blanchedalmond;
+    background-image: paint(data);
+    --data: "{}";
+}
+
+</style>
+
+<script>
+    (CSS.paintWorklet || paintWorklet).addModule('paintworklet.js');
+
+    let data = [];
+    const graph = document.querySelector('#data');
+    document.querySelector('#btn').addEventListener('click', () => {
+        for(let i = 0; i < 10; i++) {
+            const clr = Math.random() > 0.5 ? 'red' : 'blue';
+            data.push({
+                x: Math.round(Math.random() * 100),
+                y: Math.round(Math.random() * 100),
+                clr
+            });
+        }
+        graph.style.setProperty('--data', JSON.stringify(data));
+    });
+</script>
