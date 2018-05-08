@@ -1,0 +1,15 @@
+<!doctype html>
+<textarea id="checkers"></textarea>
+
+<style>
+#checkers {
+    width: 200px;
+    height: 200px;
+    background-color:blanchedalmond;
+    background-image: paint(checkers);
+}
+</style>
+
+<script>
+    (CSS.paintWorklet || paintWorklet).addModule('paintworklet.js');
+</script>
