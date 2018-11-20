@@ -1,11 +1,11 @@
 <style>
-#example {
-    --image: url('render.png');
-    background-image: paint(image);
-    width: 200px;
-    height: 200px;
-    border: 2px solid black;
-}
+    #example {
+        --image: url('render.png');
+        background-image: paint(image);
+        width: 200px;
+        height: 200px;
+        border: 2px solid black;
+    }
 </style>
 
 <div id="example"></div>
@@ -15,6 +15,7 @@
         name: '--image',
         syntax: '<image> | none',
         initialValue: 'none',
+        inherits: false,
     });
     CSS.paintWorklet.addModule('paintworklet.js');
 </script>

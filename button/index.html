@@ -1,40 +1,42 @@
 <!doctype html>
 <button id="ripple">
-  Click me!
+    Click me!
 </button>
 
 <style>
-#ripple {
-  width: 300px;
-  height: 100px;
-  font-size: 5em;
-  background-color: rgb(255,64,129);
-  background-image: paint(ripple);
-  border: 0;
-  box-shadow: 0 1px 1.5px 0 rgba(0,0,0,.12),0 1px 1px 0 rgba(0,0,0,.24);
-  color: white;
-  animation: pulse 2s ease-out infinite;
-}
+    #ripple {
+        width: 300px;
+        height: 100px;
+        font-size: 5em;
+        background-color: rgb(255, 64, 129);
+        background-image: paint(ripple);
+        border: 0;
+        box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, .12), 0 1px 1px 0 rgba(0, 0, 0, .24);
+        color: white;
+        animation: pulse 2s ease-out infinite;
+    }
 
-@keyframes pulse {
-    0% {
-        --tick: 0%;
-    }
-    50% {
-        --tick: 100%;
-    }
-    100% {
-        --tick: 0%;
-    }
-}
+    @keyframes pulse {
+        0% {
+            --tick: 0%;
+        }
 
+        50% {
+            --tick: 100%;
+        }
+
+        100% {
+            --tick: 0%;
+        }
+    }
 </style>
 
 <script>
     CSS.registerProperty({
-      name: '--tick',
-      syntax: '<percentage>',
-      initialValue: '0%'
+        name: '--tick',
+        syntax: '<percentage>',
+        initialValue: '0%',
+        inherits: false,
     });
     (CSS.paintWorklet || paintWorklet).addModule('paintworklet.js');
     // const button = document.querySelector('#ripple');
